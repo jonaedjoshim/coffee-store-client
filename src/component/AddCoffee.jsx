@@ -5,9 +5,14 @@ const AddCoffee = () => {
     e.preventDefault();
     const form = e.target;
 
+    // we can use these system to get automatically form data
+
+    // const formData = new FormData(form) 
+    // const coffeeData = Object.fromEntries(formData.entries())
+
     const coffeeData = {
       name: form.name.value,
-      chef: form.chef.value,
+      quantity: form.quantity.value,
       supplier: form.supplier.value,
       taste: form.taste.value,
       category: form.category.value,
@@ -16,6 +21,21 @@ const AddCoffee = () => {
     };
 
     console.log(coffeeData);
+
+    // send data to the backend
+
+    fetch('http://localhost:5000/addCoffee', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(coffeeData)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('after fetching you data is', data)
+      })
+
   };
 
   return (
@@ -49,15 +69,15 @@ const AddCoffee = () => {
               />
             </div>
 
-            {/* Chef */}
+            {/* quantity */}
             <div>
               <label className="label">
-                <span className="label-text font-semibold">Chef</span>
+                <span className="label-text font-semibold">Quantity</span>
               </label>
               <input
                 type="text"
-                name="chef"
-                placeholder="Enter coffee chef"
+                name="quantity"
+                placeholder="Enter coffee quantity"
                 className="input input-bordered w-full"
               />
             </div>
