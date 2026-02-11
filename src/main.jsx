@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import HomeLayOut from './layouts/HomeLayout.jsx'
 import AddCoffee from './component/AddCoffee.jsx'
 import UpdateCoffee from './component/UpdateCoffee.jsx'
+import Home from './component/Home.jsx'
 
 const router = createBrowserRouter([
   {
