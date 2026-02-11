@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 w-11/12 mx-auto md:grid-cols-2 gap-6'>
         {
           coffees.map(coffee =>
             <CoffeeCard
