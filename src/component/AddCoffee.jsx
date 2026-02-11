@@ -25,7 +25,7 @@ const AddCoffee = () => {
 
     // send data to the backend
 
-    fetch('http://localhost:5000/addCoffee', {
+    fetch('http://localhost:5000/coffees', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
