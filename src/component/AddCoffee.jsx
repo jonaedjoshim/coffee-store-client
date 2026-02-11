@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
@@ -15,7 +16,7 @@ const AddCoffee = () => {
       quantity: form.quantity.value,
       supplier: form.supplier.value,
       taste: form.taste.value,
-      category: form.category.value,
+      price: form.price.value,
       details: form.details.value,
       photo: form.photo.value,
     };
@@ -33,7 +34,14 @@ const AddCoffee = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('after fetching you data is', data)
+        if (data.insertedId) {
+          Swal.fire({
+            title: 'Coffee Added Successfully!',
+            icon: 'success',
+            draggable: true
+          })
+          form.reset()
+        }
       })
 
   };
@@ -108,15 +116,15 @@ const AddCoffee = () => {
               />
             </div>
 
-            {/* Category */}
+            {/* price */}
             <div>
               <label className="label">
-                <span className="label-text font-semibold">Category</span>
+                <span className="label-text font-semibold">Price</span>
               </label>
               <input
                 type="text"
-                name="category"
-                placeholder="Enter coffee category"
+                name="price"
+                placeholder="Enter coffee price"
                 className="input input-bordered w-full"
               />
             </div>
